@@ -34,156 +34,158 @@ class _LoginAccountState extends State<LoginAccount> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      extendBodyBehindAppBar: true,
+      extendBodyBehindAppBar: false,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Center(
-            child: Container(
-              height: 100,
-              width: 100,
-              child: Image.asset('images/icon.png', fit: BoxFit.fill),
-            ),
-          ),
-          const SizedBox(height: 60),
-          Text(
-            "Login to Your Account",
-            style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 50),
-          TextField(
-            decoration: InputDecoration(
-              prefixIcon: Icon(Icons.email, color: Colors.black54),
-              hintText: "Enter your email",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Center(
+              child: Container(
+                height: 100,
+                width: 100,
+                child: Image.asset('images/icon.png', fit: BoxFit.fill),
               ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              filled: true,
-              fillColor: Colors.grey[200], // Light background color
             ),
-            keyboardType: TextInputType.emailAddress,
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          TextField(
-            decoration: InputDecoration(
-              prefixIcon: Icon(Icons.lock_open_outlined, color: Colors.black54),
-              hintText: "Enter your Password",
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
+            const SizedBox(height: 60),
+            Text(
+              "Login to Your Account",
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
               ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              filled: true,
-              fillColor: Colors.grey[200], // Light background color
             ),
-            keyboardType: TextInputType.visiblePassword,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Checkbox(
-                value: _isChecked,
-                onChanged: (newValue) {
-                  setState(() {
-                    _isChecked = newValue!;
-                  });
-                },
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5),
+            const SizedBox(height: 50),
+            TextField(
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.email, color: Colors.black54),
+                hintText: "Enter your email",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
                 ),
-                activeColor: Colors.black,
-              ),
-              const Text(
-                "Remember me",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-              ),
-            ],
-          ),
-          SizedBox(height: 20),
-
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(vertical: 14),
-                backgroundColor: Colors.black,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25)),
-              ),
-              child: Text('Sign Up',
-                  style: TextStyle(fontSize: 16, color: Colors.white)),
-            ),
-          ),
-
-          SizedBox(
-            height: 20,
-          ),
-          Row(
-            children: [
-              Expanded(
-                child:
-                Divider(thickness: 2, color: Colors.black.withOpacity(0.3)),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Text("or",
-                    style:
-                    TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
-              ),
-              Expanded(
-                child: Divider(
-                  thickness: 2,
-                  color: Colors.black.withOpacity(0.3),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
                 ),
+                filled: true,
+                fillColor: Colors.grey[200], // Light background color
               ),
-            ],
-          ),
-          const SizedBox(height: 30),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildSocialButton(Icons.facebook, Colors.blue),
-              SizedBox(width: 15),
-              _buildSocialButton(Icons.g_mobiledata, Colors.black),
-              SizedBox(width: 15),
-              _buildSocialButton(Icons.apple, Colors.black),
-            ],
-          ),
-          const SizedBox(height: 40),
-
-          // Sign Up Option
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("Dont have an Account", style: TextStyle(fontSize: 16)),
-              GestureDetector(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CreateAccount()));
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 8),
-                  child: Text(
-                    "Sign up",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              keyboardType: TextInputType.emailAddress,
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            TextField(
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.lock_open_outlined, color: Colors.black54),
+                hintText: "Enter your Password",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                filled: true,
+                fillColor: Colors.grey[200], // Light background color
+              ),
+              keyboardType: TextInputType.visiblePassword,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Checkbox(
+                  value: _isChecked,
+                  onChanged: (newValue) {
+                    setState(() {
+                      _isChecked = newValue!;
+                    });
+                  },
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  activeColor: Colors.black,
+                ),
+                const Text(
+                  "Remember me",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
+        
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.symmetric(vertical: 14),
+                  backgroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25)),
+                ),
+                child: Text('Sign Up',
+                    style: TextStyle(fontSize: 16, color: Colors.white)),
+              ),
+            ),
+        
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child:
+                  Divider(thickness: 2, color: Colors.black.withOpacity(0.3)),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Text("or",
+                      style:
+                      TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
+                ),
+                Expanded(
+                  child: Divider(
+                    thickness: 2,
+                    color: Colors.black.withOpacity(0.3),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ]),
+              ],
+            ),
+            const SizedBox(height: 30),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _buildSocialButton(Icons.facebook, Colors.blue),
+                SizedBox(width: 15),
+                _buildSocialButton(Icons.g_mobiledata, Colors.black),
+                SizedBox(width: 15),
+                _buildSocialButton(Icons.apple, Colors.black),
+              ],
+            ),
+            const SizedBox(height: 40),
+        
+            // Sign Up Option
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Dont have an Account", style: TextStyle(fontSize: 16)),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CreateAccount()));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 8),
+                    child: Text(
+                      "Sign up",
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ]),
+        ),
       ),
     );
   }
