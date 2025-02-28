@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:funica/modules/views/account_creation/create_account.dart';
 import 'package:sign_in_button/sign_in_button.dart';
+
+import '../account_creation/create_account.dart';
 
 class LoginAccount extends StatefulWidget {
   const LoginAccount({super.key});
@@ -78,7 +79,8 @@ class _LoginAccountState extends State<LoginAccount> {
             ),
             TextField(
               decoration: InputDecoration(
-                prefixIcon: Icon(Icons.lock_open_outlined, color: Colors.black54),
+                prefixIcon:
+                    Icon(Icons.lock_open_outlined, color: Colors.black54),
                 hintText: "Enter your Password",
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -113,7 +115,7 @@ class _LoginAccountState extends State<LoginAccount> {
               ],
             ),
             SizedBox(height: 20),
-        
+
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
@@ -128,21 +130,21 @@ class _LoginAccountState extends State<LoginAccount> {
                     style: TextStyle(fontSize: 16, color: Colors.white)),
               ),
             ),
-        
+
             SizedBox(
               height: 20,
             ),
             Row(
               children: [
                 Expanded(
-                  child:
-                  Divider(thickness: 2, color: Colors.black.withOpacity(0.3)),
+                  child: Divider(
+                      thickness: 2, color: Colors.black.withOpacity(0.3)),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Text("or",
                       style:
-                      TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
                 ),
                 Expanded(
                   child: Divider(
@@ -164,7 +166,7 @@ class _LoginAccountState extends State<LoginAccount> {
               ],
             ),
             const SizedBox(height: 40),
-        
+
             // Sign Up Option
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -172,13 +174,15 @@ class _LoginAccountState extends State<LoginAccount> {
                 Text("Dont have an Account", style: TextStyle(fontSize: 16)),
                 GestureDetector(
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CreateAccount()));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => CreateAccount()));
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(left: 8),
                     child: Text(
                       "Sign up",
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),

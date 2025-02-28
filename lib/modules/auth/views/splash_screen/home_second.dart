@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:funica/modules/views/account_creation/create_account.dart';
-import 'package:funica/modules/views/account_login/login_account.dart';
 
-import '../account_creation/let_you_in.dart'; // Import LetYouIn page
+import '../../../account_creation/let_you_in.dart'; // Import LetYouIn page
 
 class HomeSecond extends StatefulWidget {
   const HomeSecond({super.key});
@@ -28,7 +26,6 @@ class _HomeSecondState extends State<HomeSecond> {
       'text': 'Lets fulfill your house needs with Funica right now!',
     },
   ];
-
 
   void nextContent() {
     if (currentIndex < contentList.length - 1) {
@@ -70,36 +67,36 @@ class _HomeSecondState extends State<HomeSecond> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(
               contentList.length,
-                  (index) => AnimatedContainer(
+              (index) => AnimatedContainer(
                 duration: Duration(milliseconds: 300),
-                margin: EdgeInsets.symmetric(horizontal: 5),
-                height: 10,
-                width: currentIndex == index ? 20 : 10,
+                margin: EdgeInsets.symmetric(horizontal: 3),
+                height: 8,
+                width: currentIndex == index ? 25 : 8,
                 decoration: BoxDecoration(
                   color: currentIndex == index ? Colors.black : Colors.grey,
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(100),
                 ),
               ),
             ),
           ),
           Spacer(),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20),
-            child: SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: nextContent,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.black,
-                  padding: EdgeInsets.symmetric(vertical: 16),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: nextContent,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black,
+                padding: EdgeInsets.symmetric(vertical: 16),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
                 ),
-                child: Text(
-                  currentIndex == contentList.length - 1 ? 'Get Started' : 'Next',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
-                ),
+              ),
+              child: Text(
+                currentIndex == contentList.length - 1 ? 'Get Started' : 'Next',
+                style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
               ),
             ),
           ),

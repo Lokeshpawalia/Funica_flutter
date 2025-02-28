@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:funica/modules/views/account_creation/create_account.dart';
-import 'package:funica/modules/views/account_login/login_account.dart';
 import 'package:sign_in_button/sign_in_button.dart';
+
+import '../account_login/login_account.dart';
+import 'create_account.dart';
 
 class LetYouIn extends StatefulWidget {
   const LetYouIn({super.key});
@@ -13,9 +14,12 @@ class LetYouIn extends StatefulWidget {
 class _LetYouInState extends State<LetYouIn> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Colors.white,
+    return Scaffold(
+      backgroundColor: Colors.white,
       extendBodyBehindAppBar: true,
-      appBar: AppBar(backgroundColor: Colors.transparent,),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 25),
         child: Column(
@@ -30,7 +34,13 @@ class _LetYouInState extends State<LetYouIn> {
               ),
             ),
             const SizedBox(height: 70),
-            Text("Let's you in",style: TextStyle(fontSize: 45,fontWeight: FontWeight.bold,),),
+            Text(
+              "Let's you in",
+              style: TextStyle(
+                fontSize: 45,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
 
             const SizedBox(height: 70),
             // Social Sign-In Buttons
@@ -39,13 +49,17 @@ class _LetYouInState extends State<LetYouIn> {
               child: SignInButton(Buttons.facebook,
                   text: "Continue with Facebook", onPressed: () {}),
             ),
-            SizedBox(height: 15,),
+            SizedBox(
+              height: 15,
+            ),
             SizedBox(
               width: double.infinity,
               child: SignInButton(Buttons.google,
                   text: "Continue with Google", onPressed: () {}),
             ),
-            SizedBox(height: 15,),
+            SizedBox(
+              height: 15,
+            ),
             SizedBox(
               width: double.infinity,
               child: SignInButton(Buttons.apple,
@@ -58,7 +72,8 @@ class _LetYouInState extends State<LetYouIn> {
             Row(
               children: [
                 Expanded(
-                  child: Divider(thickness: 2, color: Colors.black.withOpacity(0.3)),
+                  child: Divider(
+                      thickness: 2, color: Colors.black.withOpacity(0.3)),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -67,7 +82,10 @@ class _LetYouInState extends State<LetYouIn> {
                           TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
                 ),
                 Expanded(
-                  child: Divider(thickness: 2,color: Colors.black.withOpacity(0.3),),
+                  child: Divider(
+                    thickness: 2,
+                    color: Colors.black.withOpacity(0.3),
+                  ),
                 ),
               ],
             ),
@@ -79,7 +97,8 @@ class _LetYouInState extends State<LetYouIn> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>LoginAccount()));
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => LoginAccount()));
                 },
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.symmetric(vertical: 14),
@@ -88,7 +107,7 @@ class _LetYouInState extends State<LetYouIn> {
                       borderRadius: BorderRadius.circular(25)),
                 ),
                 child: Text('Sign in with password',
-                    style: TextStyle(fontSize: 16,color: Colors.white)),
+                    style: TextStyle(fontSize: 16, color: Colors.white)),
               ),
             ),
 
@@ -101,7 +120,8 @@ class _LetYouInState extends State<LetYouIn> {
                 Text("Don't have an account?", style: TextStyle(fontSize: 16)),
                 GestureDetector(
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>CreateAccount()));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => CreateAccount()));
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(left: 8),

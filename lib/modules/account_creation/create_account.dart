@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:funica/modules/views/account_login/login_account.dart';
-import 'package:sign_in_button/sign_in_button.dart';
+
+import '../account_login/login_account.dart';
 
 class CreateAccount extends StatefulWidget {
   const CreateAccount({super.key});
@@ -78,7 +78,8 @@ class _CreateAccountState extends State<CreateAccount> {
             ),
             TextField(
               decoration: InputDecoration(
-                prefixIcon: Icon(Icons.lock_open_outlined, color: Colors.black54),
+                prefixIcon:
+                    Icon(Icons.lock_open_outlined, color: Colors.black54),
                 hintText: "Enter your Password",
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -113,7 +114,7 @@ class _CreateAccountState extends State<CreateAccount> {
               ],
             ),
             SizedBox(height: 20),
-        
+
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
@@ -128,15 +129,15 @@ class _CreateAccountState extends State<CreateAccount> {
                     style: TextStyle(fontSize: 16, color: Colors.white)),
               ),
             ),
-        
+
             SizedBox(
               height: 20,
             ),
             Row(
               children: [
                 Expanded(
-                  child:
-                      Divider(thickness: 2, color: Colors.black.withOpacity(0.3)),
+                  child: Divider(
+                      thickness: 2, color: Colors.black.withOpacity(0.3)),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -164,21 +165,24 @@ class _CreateAccountState extends State<CreateAccount> {
               ],
             ),
             const SizedBox(height: 40),
-        
+
             // Sign Up Option
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Already have an account?", style: TextStyle(fontSize: 16)),
+                Text("Already have an account?",
+                    style: TextStyle(fontSize: 16)),
                 GestureDetector(
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>LoginAccount()));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => LoginAccount()));
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(left: 8),
                     child: Text(
                       "Sign in",
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
