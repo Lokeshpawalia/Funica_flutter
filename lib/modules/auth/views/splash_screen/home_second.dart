@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:funica/modules/widgets/custom_widgets.dart';
 
 import '../../../account_creation/let_you_in.dart'; // Import LetYouIn page
 
@@ -43,61 +44,64 @@ class _HomeSecondState extends State<HomeSecond> {
 
   @override
   Widget build(BuildContext context) {
+    double screenheight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: Column(
         children: [
-          Image.asset(
-            contentList[currentIndex]['image']!,
-            height: 500,
-            width: double.infinity,
-            fit: BoxFit.cover,
-          ),
-          SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              contentList[currentIndex]['text']!,
-              style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
+          Container(
+            height: screenheight * 0.5,
+            child: Image.asset(
+              contentList[currentIndex]['image']!,
+              height: 500,
+              width: double.infinity,
+              fit: BoxFit.cover,
             ),
           ),
-          Spacer(),
+
+          Container(
+            height: screenheight * 0.3,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Center(
+                child: Text(
+                  contentList[currentIndex]['text']!,
+                  style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+          ),
+
           // Dots Indicator
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(
-              contentList.length,
-              (index) => AnimatedContainer(
-                duration: Duration(milliseconds: 300),
-                margin: EdgeInsets.symmetric(horizontal: 3),
-                height: 8,
-                width: currentIndex == index ? 25 : 8,
-                decoration: BoxDecoration(
-                  color: currentIndex == index ? Colors.black : Colors.grey,
-                  borderRadius: BorderRadius.circular(100),
+          Container(
+            height: screenheight * 0.1,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(
+                contentList.length,
+                (index) => AnimatedContainer(
+                  duration: Duration(milliseconds: 300),
+                  margin: EdgeInsets.symmetric(horizontal: 3),
+                  height: 8,
+                  width: currentIndex == index ? 25 : 8,
+                  decoration: BoxDecoration(
+                    color: currentIndex == index ? Colors.black : Colors.grey,
+                    borderRadius: BorderRadius.circular(100),
+                  ),
                 ),
               ),
             ),
           ),
-          Spacer(),
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: nextContent,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.black,
-                padding: EdgeInsets.symmetric(vertical: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-              ),
-              child: Text(
-                currentIndex == contentList.length - 1 ? 'Get Started' : 'Next',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
-              ),
+
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            height: screenheight * 0.06,
+            child: CustomButton(
+              btName: currentIndex == contentList.length - 1
+                  ? 'Get Started'
+                  : 'Next',
+              callback: nextContent,
             ),
           ),
         ],
@@ -105,3 +109,24 @@ class _HomeSecondState extends State<HomeSecond> {
     );
   }
 }
+
+//SizedBox(
+//   width: double.infinity,
+//   child: ElevatedButton(
+//     onPressed: nextContent,
+//     style: ElevatedButton.styleFrom(
+//       backgroundColor: Colors.black,
+//       padding: EdgeInsets.symmetric(vertical: 16),
+//       shape: RoundedRectangleBorder(
+//         borderRadius: BorderRadius.circular(30),
+//       ),
+//     ),
+//     child: Text(
+//       currentIndex == contentList.length - 1 ? 'Get Started' : 'Next',
+//       style: TextStyle(
+//           fontSize: 18,
+//           fontWeight: FontWeight.bold,
+//           color: Colors.white),
+//     ),
+//   ),
+// ),

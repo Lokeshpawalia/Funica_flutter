@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sign_in_button/sign_in_button.dart';
 
 import '../account_creation/create_account.dart';
 
@@ -44,7 +43,7 @@ class _LoginAccountState extends State<LoginAccount> {
           padding: const EdgeInsets.all(16.0),
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Center(
-              child: Container(
+              child: SizedBox(
                 height: 100,
                 width: 100,
                 child: Image.asset('images/icon.png', fit: BoxFit.fill),

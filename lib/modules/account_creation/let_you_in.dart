@@ -27,7 +27,7 @@ class _LetYouInState extends State<LetYouIn> {
           children: [
             // Logo
             Center(
-              child: Container(
+              child: SizedBox(
                 height: 100,
                 width: 100,
                 child: Image.asset('images/icon.png', fit: BoxFit.fill),
