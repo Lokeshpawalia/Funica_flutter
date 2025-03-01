@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sign_in_button/sign_in_button.dart';
-
-import '../account_login/login_account.dart';
+import 'package:funica/modules/account_login/login_account.dart';
+import 'package:funica/modules/widgets/custom_widgets.dart';
 import 'create_account.dart';
 
 class LetYouIn extends StatefulWidget {
@@ -14,6 +13,7 @@ class LetYouIn extends StatefulWidget {
 class _LetYouInState extends State<LetYouIn> {
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.white,
       extendBodyBehindAppBar: true,
@@ -26,11 +26,14 @@ class _LetYouInState extends State<LetYouIn> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // Logo
-            Center(
-              child: SizedBox(
-                height: 100,
-                width: 100,
-                child: Image.asset('images/icon.png', fit: BoxFit.fill),
+            Container(
+              height: screenHeight * 0.2,
+              child: Center(
+                child: SizedBox(
+                  height: 100,
+                  width: 100,
+                  child: Image.asset('images/icon.png', fit: BoxFit.fill),
+                ),
               ),
             ),
             const SizedBox(height: 70),
@@ -44,26 +47,36 @@ class _LetYouInState extends State<LetYouIn> {
 
             const SizedBox(height: 70),
             // Social Sign-In Buttons
-            SizedBox(
-              width: double.infinity,
-              child: SignInButton(Buttons.facebook,
-                  text: "Continue with Facebook", onPressed: () {}),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            SizedBox(
-              width: double.infinity,
-              child: SignInButton(Buttons.google,
-                  text: "Continue with Google", onPressed: () {}),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            SizedBox(
-              width: double.infinity,
-              child: SignInButton(Buttons.apple,
-                  text: "Continue with Apple", onPressed: () {}),
+
+            Column(
+              children: [
+                SocialButton(
+                    socialMediaName: 'Continue with Facebook',
+                    icon: Icon(
+                      Icons.facebook,
+                      color: Colors.blue,
+                      size: 20,
+                    )),
+                SizedBox(
+                  height: 15,
+                ),
+                SocialButton(
+                    socialMediaName: 'Continue with Google',
+                    icon: Icon(
+                      Icons.g_translate,
+                      color: Colors.greenAccent,
+                    )),
+                SizedBox(
+                  height: 15,
+                ),
+                SocialButton(
+                    socialMediaName: 'Continue with Apple',
+                    icon: Icon(
+                      Icons.apple,
+                      color: Colors.black,
+                      size: 25,
+                    )),
+              ],
             ),
 
             const SizedBox(height: 50),
@@ -92,28 +105,16 @@ class _LetYouInState extends State<LetYouIn> {
 
             const SizedBox(height: 50),
 
-            // Sign In with Password Button
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => LoginAccount()));
-                },
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 14),
-                  backgroundColor: Colors.black,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25)),
-                ),
-                child: Text('Sign in with password',
-                    style: TextStyle(fontSize: 16, color: Colors.white)),
-              ),
+            CustomButton(
+              btName: 'Sign in with password',
+              callback: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => LoginAccount()));
+              },
             ),
 
             const SizedBox(height: 40),
 
-            // Sign Up Option
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
