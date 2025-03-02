@@ -11,6 +11,7 @@ class FillYourProfile extends StatefulWidget {
 class _FillYourProfileState extends State<FillYourProfile> {
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: true,
@@ -25,31 +26,53 @@ class _FillYourProfileState extends State<FillYourProfile> {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           children: [
-            _buildProfileImage(),
-            _buildTextField(
-                hintText: "Full Name", keyboardType: TextInputType.name),
-            _buildTextField(
-                hintText: "Nickname", keyboardType: TextInputType.name),
-            _buildTextField(
-              hintText: "D.O.B",
-              keyboardType: TextInputType.datetime,
-              suffixIcon: Icons.calendar_month,
+            Container(height: screenHeight * 0.2, child: _buildProfileImage()),
+            SizedBox(
+              height: 6,
             ),
-            _buildTextField(
-              hintText: "Email",
-              keyboardType: TextInputType.emailAddress,
-              suffixIcon: Icons.email,
+            Container(
+              height: screenHeight * 0.09,
+              child: _buildTextField(
+                  hintText: "Full Name", keyboardType: TextInputType.name),
             ),
-            _buildTextField(
-              hintText: "Phone No",
-              keyboardType: TextInputType.phone,
-              suffixIcon: Icons.phone,
+            Container(
+              height: screenHeight * 0.09,
+              child: _buildTextField(
+                  hintText: "Nickname", keyboardType: TextInputType.name),
             ),
-            _buildGenderDropdown(),
+            Container(
+              height: screenHeight * 0.09,
+              child: _buildTextField(
+                hintText: "D.O.B",
+                keyboardType: TextInputType.datetime,
+                suffixIcon: Icons.calendar_month,
+              ),
+            ),
+            Container(
+              height: screenHeight * 0.09,
+              child: _buildTextField(
+                hintText: "Email",
+                keyboardType: TextInputType.emailAddress,
+                suffixIcon: Icons.email,
+              ),
+            ),
+            Container(
+              height: screenHeight * 0.09,
+              child: _buildTextField(
+                hintText: "Phone No",
+                keyboardType: TextInputType.phone,
+                suffixIcon: Icons.phone,
+              ),
+            ),
+            Container(
+                height: screenHeight * 0.09, child: _buildGenderDropdown()),
             const SizedBox(height: 16),
-            CustomButton(
-              btName: 'Continue',
-              callback: () {},
+            Container(
+              height: screenHeight * 0.06,
+              child: CustomButton(
+                btName: 'Continue',
+                callback: () {},
+              ),
             ),
             const SizedBox(height: 18),
           ],
@@ -59,18 +82,15 @@ class _FillYourProfileState extends State<FillYourProfile> {
   }
 
   Widget _buildProfileImage() {
-    return Expanded(
-      flex: 3,
-      child: Center(
-        child: Container(
-          height: 200,
-          width: 200,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            image: const DecorationImage(
-              image: AssetImage('images/profile.png'),
-              fit: BoxFit.cover,
-            ),
+    return Center(
+      child: Container(
+        height: 200,
+        width: 200,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          image: const DecorationImage(
+            image: AssetImage('images/profile.png'),
+            fit: BoxFit.cover,
           ),
         ),
       ),
@@ -82,58 +102,51 @@ class _FillYourProfileState extends State<FillYourProfile> {
     required TextInputType keyboardType,
     IconData? suffixIcon,
   }) {
-    return Expanded(
-      flex: 1,
-      child: TextField(
-        decoration: InputDecoration(
-          hintText: hintText,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide.none,
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide.none,
-          ),
-          filled: true,
-          fillColor: Colors.grey[100],
-          suffixIcon: suffixIcon != null
-              ? Icon(suffixIcon, color: Colors.black54)
-              : null,
+    return TextField(
+      decoration: InputDecoration(
+        hintText: hintText,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide.none,
         ),
-        keyboardType: keyboardType,
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide.none,
+        ),
+        filled: true,
+        fillColor: Colors.grey[100],
+        suffixIcon:
+            suffixIcon != null ? Icon(suffixIcon, color: Colors.black54) : null,
       ),
+      keyboardType: keyboardType,
     );
   }
 
   Widget _buildGenderDropdown() {
-    return Expanded(
-      flex: 1,
-      child: DropdownButtonFormField<String>(
-        decoration: InputDecoration(
-          hintText: "Gender",
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide.none,
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide.none,
-          ),
-          filled: true,
-          fillColor: Colors.grey[100],
+    return DropdownButtonFormField<String>(
+      decoration: InputDecoration(
+        hintText: "Gender",
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide.none,
         ),
-        value: null,
-        onChanged: (String? newValue) {
-          print("Selected Gender: $newValue");
-        },
-        items: ["Male", "Female", "Other"].map((String gender) {
-          return DropdownMenuItem<String>(
-            value: gender,
-            child: Text(gender),
-          );
-        }).toList(),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide.none,
+        ),
+        filled: true,
+        fillColor: Colors.grey[100],
       ),
+      value: null,
+      onChanged: (String? newValue) {
+        print("Selected Gender: $newValue");
+      },
+      items: ["Male", "Female", "Other"].map((String gender) {
+        return DropdownMenuItem<String>(
+          value: gender,
+          child: Text(gender),
+        );
+      }).toList(),
     );
   }
 }
